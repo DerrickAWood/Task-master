@@ -17,10 +17,12 @@ export default class List {
   get Templete(){
     return /*html*/ `
     <div class="col-4 border border-warning rounded shadow bg-dark text-light mt-2">
-      <h1>${this.title} <span> <button ></button></span></h1>
-      <hr class="bg-light">
+    <h1>${this.title}</h1>
+    <hr class="bg-light">
+    <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')"><span>&times;</span></button>
     <div>
-    <h3></h3>
+    <h3 id="item-elem">${this.items}</h3>
+    </div>
 
 
     <form onsubmit="app.listController.createItems(event)">
@@ -29,7 +31,6 @@ export default class List {
       <button type="submit" class="btn btn-primary">+</button>
 
     </form>
-      <h5 id="item-elem"></h5>
     <dl>
       ${this.items}
     </dl>

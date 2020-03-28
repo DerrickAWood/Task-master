@@ -6,11 +6,14 @@ export default class Item {
     this.id = data.id || generateId()
   }
   get Templete(){
-    return /*html*/ `
+    return /*html*/`
     <dd>
-      <h5>${this.title}</h5>
+    <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')">
+    <span>&times;</span>
+    </button>
+    <h5>${this.title}</h5>
     </dd>
-    `
-  }
+  `
+}
 }
 
