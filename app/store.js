@@ -1,8 +1,11 @@
 import List from "./Models/List.js";
+import Item from "./Models/Item.js"
 
 let _state = {
   /** @type {List[]} */
-  lists: []
+  lists: [],
+   /** @type {Item[]} */
+   items: [],
 };
 
 //NOTE You should not need to change the code from this point down
