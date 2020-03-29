@@ -41,7 +41,7 @@ export default class List {
 
   get item(){
     let templete = ''
-    // this.items.forEach(topping => templete += this.item.Templete)
+    this.items.forEach(item => templete += item.getTemplete(this.id))
     return templete
   }
   

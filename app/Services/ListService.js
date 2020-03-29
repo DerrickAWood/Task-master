@@ -1,4 +1,5 @@
 import List from "../Models/List.js";
+import Item from "../Models/Item.js"
 import _item from "../Models/Item.js"
 import _store from "../store.js"
 
@@ -16,11 +17,12 @@ class ListService {
     _store.saveState()
   }
   
-//   createItems(newItemData, listId){
-//     let newItem = new Item(newItemData)
-//     let list = _store.State.lists.find(list => list.id == listId)
-//     // list.Item.push(newItem)
-//   }
+  createItems(newItemData){
+    let newItem = new List(newItemData)
+    _store.State.lists.push(newItem)
+    // let list = _store.State.lists.find(list => list.id == listId)
+    _store.saveState()
+  }
 
   delete(listId){
     _store.State.lists = _store.State.lists.filter(list => list.id != listId)

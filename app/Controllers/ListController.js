@@ -19,7 +19,7 @@ function _drawLists() {
 //   let templete = ''
 //   let items = _store.State.items
 
-//   items.forEach(item => templete += item.Templete)
+//   items.forEach(item => templete += getTemplete(listId))
 //   document.getElementById("item-elem").innerHTML = templete
 // }
 
@@ -46,15 +46,15 @@ export default class ListController {
     formData.reset()
   }
 
-  // createItems(event){
-  //   event.preventDefault()
-  //   let formData = event.target 
-  //   let newItemData = {
-  //     title: formData.itemName.value
-  //   }
-  //   _listService.createItems(newItemData)
-  //   _drawLists()
-  // }
+  createItems(event){
+    event.preventDefault()
+    let formData = event.target 
+    let newItemData = {
+      title: formData.itemName.value
+    }
+    _listService.createItems(newItemData)  
+    _drawLists()
+  }
 
 
   delete(listId){

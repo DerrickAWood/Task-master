@@ -5,10 +5,10 @@ export default class Item {
     this.title = data.title
     this.id = data.id || generateId()
   }
-  get Templete(){
+  getTemplete(listId){
     return /*html*/`
     <dd>
-    <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')">
+    <button type="button" class="close text-danger" onclick="app.listController.delete('${listId}','${this.id}')">
     <span>&times;</span>
     </button>
     <h5>${this.title}</h5>
