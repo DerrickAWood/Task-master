@@ -14,14 +14,15 @@ function _drawLists() {
 }
 
 
+// ANCHOR needs fixed
 
-// function _drawItems(){
-//   let templete = ''
-//   let items = _store.State.items
+function _drawItems(){
+  let templete = ''
+  let items = _store.State.items
 
-//   items.forEach(item => templete += getTemplete(listId))
-//   document.getElementById("item-elem").innerHTML = templete
-// }
+  items.forEach(item => templete += getTemplete(listId))
+  document.getElementById("item-elem").innerHTML = templete
+}
 
 
 
@@ -46,13 +47,13 @@ export default class ListController {
     formData.reset()
   }
 
-  createItems(event){
+  createItems(event, listId){
     event.preventDefault()
     let formData = event.target 
     let newItemData = {
       title: formData.itemName.value
     }
-    _listService.createItems(newItemData)  
+    _listService.createItems(newItemData, listId)  
     _drawLists()
   }
 

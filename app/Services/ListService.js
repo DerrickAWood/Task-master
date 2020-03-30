@@ -17,10 +17,13 @@ class ListService {
     _store.saveState()
   }
   
-  createItems(newItemData){
-    let newItem = new List(newItemData)
-    _store.State.lists.push(newItem)
-    // let list = _store.State.lists.find(list => list.id == listId)
+
+  // ANCHOR needs fixed
+  createItems(newItemData, listId){
+    let newItem = new Item(newItemData)
+    // _store.State.items.push(newItem)
+    let list = _store.State.lists.find(list => list.id == listId)
+    list.item.push(newItem)
     _store.saveState()
   }
 

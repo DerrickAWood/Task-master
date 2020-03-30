@@ -14,6 +14,8 @@ export default class List {
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
 
 
+  // ANCHOR is this right?
+
   get Templete(){
     return /*html*/ `
     <div class="col-4 border border-warning rounded shadow bg-dark text-light mt-2">
