@@ -33,10 +33,6 @@ class ListService {
     if(del){
       _store.State.lists = _store.State.lists.filter(list => list.id != listId)
     }
-      
-    // filter for item id
-    // save to local for items
-    // alert
     _store.saveState()
   }
 
@@ -45,11 +41,12 @@ class ListService {
 
 
 
-  deleteItem(itemId){
+  deleteItem(listid, itemId){
     console.log(_store.State.lists);
     let del = confirm('you sure?')
     if(del){
-      _store.State.items = _store.State.items.filter(item => item.id != itemId)
+      let list = _store.State.lists.find(list => list.id == listid)
+      list.items = list.items.filter(item => item.id != itemId)
       console.log(itemId);
     }
     _store.saveState()

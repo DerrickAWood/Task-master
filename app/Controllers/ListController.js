@@ -55,9 +55,9 @@ export default class ListController {
     _drawLists()
   }
 
-  deleteItem(itemId){
+  deleteItem(listId, itemId){
     console.log(itemId)
-    _listService.deleteItem(itemId)
+    _listService.deleteItem(listId ,itemId)
     _drawLists()
   }
 
