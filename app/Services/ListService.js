@@ -1,7 +1,9 @@
 import List from "../Models/List.js";
-import Item from "../Models/Item.js"
-import _item from "../Models/Item.js"
-import _store from "../store.js"
+import Item from "../Models/Item.js";
+import _item from "../Models/Item.js";
+import _store from "../store.js";
+
+
 
 //Public
 class ListService {
@@ -9,7 +11,7 @@ class ListService {
   //given the information you need in the controller,
   //what methods will you need to do when this class is first 'constructed'?
   //NOTE You will need this code to persist your data into local storage, be sure to call the store method to save after each change
-
+ 
   createTask(newListData){
     let newList = new List(newListData)
     _store.State.lists.push(newList)
@@ -18,21 +20,47 @@ class ListService {
   }
   
 
-  // ANCHOR needs fixed
   createItems(newItemData, listId){
     let newItem = new Item(newItemData)
-    // _store.State.items.push(newItem)
+    console.log(listId);
     let list = _store.State.lists.find(list => list.id == listId)
-    list.item.push(newItem)
+    list.items.push(newItem)
     _store.saveState()
   }
 
   delete(listId){
-    _store.State.lists = _store.State.lists.filter(list => list.id != listId)
+    let del = confirm('you sure?')
+    if(del){
+      _store.State.lists = _store.State.lists.filter(list => list.id != listId)
+    }
+      
+    // filter for item id
+    // save to local for items
+    // alert
     _store.saveState()
   }
 
+
+
+
+
+
+  deleteItem(itemId){
+    console.log(_store.State.lists);
+    let del = confirm('you sure?')
+    if(del){
+      _store.State.items = _store.State.items.filter(item => item.id != itemId)
+      console.log(itemId);
+    }
+    _store.saveState()
+  }
 }
+
+
+
+
+
+
 
 console.log('service');
 

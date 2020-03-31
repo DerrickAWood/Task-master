@@ -5,7 +5,7 @@ let _state = {
   /** @type {List[]} */
   lists: [],
    /** @type {Item[]} */
-   items: [],
+   items: []
 };
 
 //NOTE You should not need to change the code from this point down

@@ -7,14 +7,12 @@ export default class List {
     //TODO Your constructor takes in a data object that should have the properties you need to create your list here is a freebie, it will set the id its provided, or if that is undefined it will create a new one (this is an alternative to object destructuring)
     this.title = data.title
     this.id = data.id || generateId();
-    /** @type {Item[]} */
-        this.items = []
+    this.items = [] || data.items.map(i => new Item(i))
   }
   //Be sure to add the methods needed to create the view template for this model
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
 
 
-  // ANCHOR is this right?
 
   get Templete(){
     return /*html*/ `
@@ -23,18 +21,18 @@ export default class List {
     <hr class="bg-light">
     <button type="button" class="close text-danger" onclick="app.listController.delete('${this.id}')"><span>&times;</span></button>
     <div>
-    <h3 id="item-elem">${this.items}</h3>
+    <h3>${this.item}</h3>
     </div>
 
 
-    <form onsubmit="app.listController.createItems(event)">
+    <form onsubmit="app.listController.createItems(event, '${this.id}')">
       <label for="itemName"></label>
       <input type="text" name="itemName" placeholder="Enter Task...">
       <button type="submit" class="btn btn-primary">+</button>
 
     </form>
     <dl>
-      ${this.items}
+      
     </dl>
     </div>
     </div>

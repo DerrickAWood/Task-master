@@ -10,19 +10,8 @@ function _drawLists() {
 
   lists.forEach(list => templete += list.Templete);
   document.getElementById("task-card").innerHTML = templete
-  // _drawItems()
 }
 
-
-// ANCHOR needs fixed
-
-function _drawItems(){
-  let templete = ''
-  let items = _store.State.items
-
-  items.forEach(item => templete += getTemplete(listId))
-  document.getElementById("item-elem").innerHTML = templete
-}
 
 
 
@@ -47,7 +36,8 @@ export default class ListController {
     formData.reset()
   }
 
-  createItems(event, listId){
+  createItems(event, listId){;
+    console.log(listId)
     event.preventDefault()
     let formData = event.target 
     let newItemData = {
@@ -55,12 +45,19 @@ export default class ListController {
     }
     _listService.createItems(newItemData, listId)  
     _drawLists()
+    
   }
 
 
-  delete(listId){
+  delete(listId){ 
     console.log(listId)
     _listService.delete(listId)
+    _drawLists()
+  }
+
+  deleteItem(itemId){
+    console.log(itemId)
+    _listService.deleteItem(itemId)
     _drawLists()
   }
 
